@@ -30,9 +30,6 @@ if not "%RENDER_DEPLOY_HOOK_URL%"=="" (
   if errorlevel 1 (
     echo Open Render dashboard and check Deploy Hook URL.
   )
-) else (
-  start "" "https://render.com/deploy?repo=https://github.com/dostoyny/stitch"
-  echo Opened one-click Render Blueprint page.
 )
 echo Done. GitHub push completed.
 pause
