@@ -25,5 +25,14 @@ if errorlevel 1 (
   pause
   exit /b 1
 )
-echo Done.
+if not "%RENDER_DEPLOY_HOOK_URL%"=="" (
+  powershell -NoProfile -Command "try { Invoke-WebRequest -Method Post -Uri '%RENDER_DEPLOY_HOOK_URL%' | Out-Null; Write-Host 'Render deploy triggered.' } catch { Write-Host 'Deploy hook failed.'; exit 1 }"
+  if errorlevel 1 (
+    echo Open Render dashboard and check Deploy Hook URL.
+  )
+) else (
+  start "" "https://render.com/deploy?repo=https://github.com/dostoyny/stitch"
+  echo Opened one-click Render Blueprint page.
+)
+echo Done. GitHub push completed.
 pause
