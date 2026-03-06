@@ -188,7 +188,7 @@ button:active {
 
 /* Chat Screen */
 #chat-screen {
-    display: flex;
+    /* display: flex; removed to allow .screen class to toggle display */
     width: 100%;
 }
 
