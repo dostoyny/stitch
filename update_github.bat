@@ -19,12 +19,11 @@ if errorlevel 1 (
   echo No changes to commit.
 )
 git branch -M main
-echo Enter GitHub username and token in this window if asked.
-set GIT_TERMINAL_PROMPT=1
-git -c credential.helper= -c core.askPass= push -u origin main
+git config credential.helper manager-core >nul 2>&1
+git push -u origin main
 if errorlevel 1 (
   echo Push failed.
-  echo If token is requested, paste token as password.
+  echo Open GitHub sign-in window and complete login.
   pause
   exit /b 1
 )
